@@ -28,5 +28,6 @@ public class DemoApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         logger.info("Hello World!");
         this.demoRepository.demo();
+        this.demoRepository.demo2();
     }
 }
