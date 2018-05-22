@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: ${NODE_ENV:dev}
   datasource:
     url: jdbc:mysql://localhost/test
     username: test

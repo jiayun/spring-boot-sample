@@ -29,5 +29,7 @@ public class DemoApplication implements CommandLineRunner {
         logger.info("Hello World!");
         this.demoRepository.demo();
         this.demoRepository.demo2();
+
+        Thread.sleep(5000);
     }
 }
