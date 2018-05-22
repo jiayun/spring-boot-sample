@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost/test
+    username: test
+    password: test
+    hikari:
+      maximumPoolSize: 1
