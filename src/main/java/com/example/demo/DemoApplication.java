@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.Scheduled;
 
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {
@@ -33,7 +34,10 @@ public class DemoApplication implements CommandLineRunner {
         logger.info("Hello World!");
         this.demoRepository.demo();
         this.demoRepository.demo2();
+    }
 
-        demoRabbitSender.send();
+    @Scheduled(fixedRate = 1000)
+    public void sendToRabbit() {
+        this.demoRabbitSender.send();
     }
 }
