@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.component.DemoRabbitSender;
 import com.example.demo.dao.DemoRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,9 +16,12 @@ public class DemoApplication implements CommandLineRunner {
 
     private final DemoRepository demoRepository;
 
+    private final DemoRabbitSender demoRabbitSender;
+
     @Autowired
-    public DemoApplication(DemoRepository demoRepository) {
+    public DemoApplication(DemoRepository demoRepository, DemoRabbitSender demoRabbitSender) {
         this.demoRepository = demoRepository;
+        this.demoRabbitSender = demoRabbitSender;
     }
 
     public static void main(String[] args) {
@@ -30,6 +34,6 @@ public class DemoApplication implements CommandLineRunner {
         this.demoRepository.demo();
         this.demoRepository.demo2();
 
-        Thread.sleep(5000);
+        demoRabbitSender.send();
     }
 }
