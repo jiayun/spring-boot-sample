@@ -7,3 +7,6 @@ spring:
     password: test
     hikari:
       maximumPoolSize: 1
+  data:
+    mongodb:
+      uri: mongodb://localhost/test

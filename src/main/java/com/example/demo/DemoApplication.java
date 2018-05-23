@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import com.example.demo.component.DemoRabbitSender;
+import com.example.demo.dao.DemoMongoRepository;
 import com.example.demo.dao.DemoRedisRepository;
 import com.example.demo.dao.DemoRepository;
 import org.slf4j.Logger;
@@ -22,11 +23,14 @@ public class DemoApplication implements CommandLineRunner {
 
     private final DemoRedisRepository demoRedisRepository;
 
+    private final DemoMongoRepository demoMongoRepository;
+
     @Autowired
-    public DemoApplication(DemoRepository demoRepository, DemoRabbitSender demoRabbitSender, DemoRedisRepository demoRedisRepository) {
+    public DemoApplication(DemoRepository demoRepository, DemoRabbitSender demoRabbitSender, DemoRedisRepository demoRedisRepository, DemoMongoRepository demoMongoRepository) {
         this.demoRepository = demoRepository;
         this.demoRabbitSender = demoRabbitSender;
         this.demoRedisRepository = demoRedisRepository;
+        this.demoMongoRepository = demoMongoRepository;
     }
 
     public static void main(String[] args) {
@@ -44,6 +48,7 @@ public class DemoApplication implements CommandLineRunner {
         this.demoRabbitSender.asyncSend();
 
         this.demoRedisRepository.demo();
+        this.demoMongoRepository.demo();
     }
 
     @Scheduled(fixedRate = 1000)
