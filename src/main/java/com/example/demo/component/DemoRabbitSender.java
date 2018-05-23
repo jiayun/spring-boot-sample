@@ -1,12 +1,17 @@
 package com.example.demo.component;
 
 import com.example.demo.domain.Partition;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 @Component
 public class DemoRabbitSender {
+
+    private static final Logger logger = LoggerFactory.getLogger(DemoRabbitSender.class);
 
     private static final String queueName = "demo";
 
@@ -24,5 +29,11 @@ public class DemoRabbitSender {
         p.setEnd(99999L);
 
         this.amqpTemplate.convertAndSend(queueName, p);
+    }
+
+    @Async
+    public void asyncSend() {
+        logger.info("asyncSendToRabbit()");
+        send();
     }
 }

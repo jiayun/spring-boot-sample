@@ -34,6 +34,10 @@ public class DemoApplication implements CommandLineRunner {
         logger.info("Hello World!");
         this.demoRepository.demo();
         this.demoRepository.demo2();
+
+        this.demoRabbitSender.asyncSend();
+        this.demoRabbitSender.asyncSend();
+        this.demoRabbitSender.asyncSend();
     }
 
     @Scheduled(fixedRate = 1000)
