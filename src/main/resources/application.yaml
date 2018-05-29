@@ -2,18 +2,16 @@ spring:
   profiles:
     active: ${NODE_ENV:dev}
   datasource:
-    url: jdbc:mysql://localhost/test
+    jdbc-url: jdbc:mysql://localhost/test
     username: test
     password: test
-    hikari:
-      maximumPoolSize: 1
+    maximumPoolSize: 1
   data:
     mongodb:
       uri: mongodb://localhost/test
 demo2:
   datasource:
-    url: jdbc:mysql://localhost/test
+    jdbc-url: jdbc:mysql://localhost/test
     username: test
     password: test
-    hikari:
-      maximumPoolSize: 1
+    maximumPoolSize: 1

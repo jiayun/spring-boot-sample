@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import com.example.demo.component.DemoRabbitSender;
+import com.example.demo.dao.Demo2Repository;
 import com.example.demo.dao.DemoMongoRepository;
 import com.example.demo.dao.DemoRedisRepository;
 import com.example.demo.dao.DemoRepository;
@@ -19,6 +20,8 @@ public class DemoApplication implements CommandLineRunner {
 
     private final DemoRepository demoRepository;
 
+    private final Demo2Repository demo2Repository;
+
     private final DemoRabbitSender demoRabbitSender;
 
     private final DemoRedisRepository demoRedisRepository;
@@ -26,8 +29,9 @@ public class DemoApplication implements CommandLineRunner {
     private final DemoMongoRepository demoMongoRepository;
 
     @Autowired
-    public DemoApplication(DemoRepository demoRepository, DemoRabbitSender demoRabbitSender, DemoRedisRepository demoRedisRepository, DemoMongoRepository demoMongoRepository) {
+    public DemoApplication(DemoRepository demoRepository, Demo2Repository demo2Repository, DemoRabbitSender demoRabbitSender, DemoRedisRepository demoRedisRepository, DemoMongoRepository demoMongoRepository) {
         this.demoRepository = demoRepository;
+        this.demo2Repository = demo2Repository;
         this.demoRabbitSender = demoRabbitSender;
         this.demoRedisRepository = demoRedisRepository;
         this.demoMongoRepository = demoMongoRepository;
@@ -42,6 +46,8 @@ public class DemoApplication implements CommandLineRunner {
         logger.info("Hello World!");
         this.demoRepository.demo();
         this.demoRepository.demo2();
+
+        this.demo2Repository.demo();
 
         this.demoRabbitSender.asyncSend();
         this.demoRabbitSender.asyncSend();
